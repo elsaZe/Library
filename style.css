@@ -1,0 +1,8 @@
+#book_list{
+    display: grid;
+    gap: 10px;
+}
+
+.book_box {
+    border: 2px solid black;
+}
