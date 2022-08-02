@@ -1,8 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Uchen&display=swap');
+
+*{
+    font-family: 'Uchen', sans-serif;
+}
+
+:root{
+    --font-color: #354259;
+    --background-color: #fbefda;
+    --shadow-color: #CDC2AE;
+    --highlight-color: #C2DED1;
+    --header-color: #CDC2AE;
+}
+
+body{
+    display: grid;
+    color: var(--font-color);
+    background-color: #e1fff1
+}
+
+.header{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background-color: var(--header-color);
+    align-items: center;
+    box-shadow: 0px 5px 2px var(--font-color);
+}
+
+h1{
+    color: var(--font-color);
+    margin-left: 30px;
+}
+
+input:hover{
+    background-color: var(--background-color);
+}
+
+.checkbox-entry{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.form-entry{
+    display: grid;
+    grid-template-rows: auto auto;
+    margin-top: 5px;
+}
+
+#add{
+    width: fit-content;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px var(--font-color);
+    align-content: center;
+}
+
+#add:hover{
+    background-color: var(--background-color);
+}
+
+.inputs{
+    display: none;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    border: 3px solid var(--font-color);
+    z-index: 9;
+    width: 250px;
+    background-color: var(--highlight-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 1px 1px lightgray;
+}
+
+h3{
+    justify-self: center;
+
+}
+
+.book-inputs{
+    background-color: beige;
+    width: 200px;
+    padding: 20px;
+}
+
+
+#new{
+    justify-self: end;
+    display: flex;
+    height: 40px;
+    width: 60px;
+    height: 60px;
+    margin-right: 30px;
+    background-color: var(--font-color);
+    color: white;
+    font-size: 60px;
+   
+    justify-content: center;
+    padding-top: 5px;
+    align-items: center;
+    border:2px solid #354259;
+    box-shadow: 2px 2px gray;
+}
+
+#new:hover{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    font-size: 70px;
+}
+
 #book_list{
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit minmax(200px 1fr));
+    gap: 50px;
+    margin: 20px;
 }
 
 .book_box {
-    border: 2px solid black;
+    border: 2px solid var(--font-color);
+    width: 250px;
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr auto;
+    background-color: white;
+    box-shadow: 2px 2px 1px gray;
+    border-radius: 5px;
+    justify-content: center;
 }
+
+.read_checkbox{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.book_title {
+    background-color: var(--background-color);
+    font-size: x-large;
+    width: 250px;
+}
+
+
+
+
