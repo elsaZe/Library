@@ -7,14 +7,17 @@ function Book(title, author, pages, read){
     this.read = read
 }
 
+document.getElementById('add').addEventListener('click', addBookToLibrary);
+
 function addBookToLibrary() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let read = document.getElementById('read').checked;
     const newBook = new Book(title,author,pages,read);
-    myLibrary.push(newBook)
-    createDiv(myLibrary)
+    myLibrary.push(newBook);
+    createDiv(myLibrary);
+    hidePopup();
 }
 
 const parent = document.getElementById('book_list')
@@ -36,16 +39,24 @@ function createDiv(library) {
 
         const authorDiv = document.createElement('div')
         authorDiv.classList.add('authorDiv');
-        authorDiv.textContent = library[i].author
+        authorDiv.textContent = "Author: "+library[i].author
         authorDiv.className = "author_name";
         bookDiv.appendChild(authorDiv)
     
         const pagesDiv = document.createElement('div')
         pagesDiv.classList.add('titleDiv');
-        pagesDiv.textContent = library[i].pages
-        pagesDiv.className = "book_title";
+        pagesDiv.textContent = "Pages: "+library[i].pages
+        pagesDiv.className = "pages_number";
         bookDiv.appendChild(pagesDiv)
     
+        const checkboxDiv = document.createElement('div');
+        bookDiv.appendChild(checkboxDiv);
+        checkboxDiv.className = "read_checkbox"
+
+        const checkboxLabel = document.createElement('p')
+        checkboxLabel.textContent = "read?"
+        checkboxDiv.appendChild(checkboxLabel)
+
         const checkbox = document.createElement('input')
         checkbox.type = 'checkbox'
         checkbox.classList.add('checkbox');
@@ -55,7 +66,7 @@ function createDiv(library) {
             checkbox.checked = false
         }
         checkbox.className = "checkbox";
-        bookDiv.appendChild(checkbox);
+        checkboxDiv.appendChild(checkbox);
     
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('deleteButton');
@@ -79,11 +90,21 @@ function createDiv(library) {
  
 }
 
-
 function clearCards(parent) {
     while(parent.firstChild){
         parent.removeChild(parent.firstChild)
     }
 }
 
-document.getElementById('add').addEventListener('click', addBookToLibrary);
+
+
+document.getElementById('new').addEventListener('click', showPopup)
+
+function showPopup() {
+    document.querySelector('.inputs').style.display = "grid"
+}
+
+function hidePopup() {
+    document.querySelector('.inputs').style.display = "none"
+}
+
