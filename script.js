@@ -8,10 +8,11 @@ function Book(title, author, pages, read){
 }
 
 function createDiv(newBook) {
-    let index=myLibrary.length;
+    let index=myLibrary.length-1;
     const bookDiv = document.createElement('div')
     document.getElementById('book_list').appendChild(bookDiv)
-    bookDiv.className = index;
+    bookDiv.className = "book_box";
+    bookDiv.id = "book"+index;
     
     const titleDiv = document.createElement('div')
     titleDiv.classList.add('titleDiv');
@@ -31,11 +32,30 @@ function createDiv(newBook) {
     pagesDiv.className = "book_title";
     bookDiv.appendChild(pagesDiv)
 
-    const readDiv = document.createElement('div')
-    readDiv.classList.add('titleDiv');
-    readDiv.textContent = newBook.read
-    readDiv.className = "book_title";
-    bookDiv.appendChild(readDiv)
+    const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox'
+    checkbox.classList.add('checkbox');
+    if(newBook.read.checked == true){
+        checkbox.checked = true
+    }else{
+        checkbox.checked = false
+    }
+
+    checkbox.className = "checkbox";
+    bookDiv.appendChild(checkbox);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deleteButton');
+    deleteButton.textContent = "Delete";
+    deleteButton.className = "delete";
+    deleteButton.id = index;
+    bookDiv.appendChild(deleteButton);
+
+    document.getElementById(index).addEventListener('click', deleteBook);
+
+    function deleteBook() {
+        console.log("delete")
+    }
 }
 
 
@@ -43,11 +63,15 @@ function addBookToLibrary() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let read = document.getElementById('read').value;
+    let read = document.getElementById('read');
     const newBook = new Book(title,author,pages,read);
     myLibrary.push(newBook)
     console.log(myLibrary)
+    console.log(newBook.read.checked)
     createDiv(newBook)
 }
 
-document.getElementById('add').addEventListener('click', addBookToLibrary)
+
+
+document.getElementById('add').addEventListener('click', addBookToLibrary);
+
