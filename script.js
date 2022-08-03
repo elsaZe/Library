@@ -18,6 +18,7 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
     createDiv(myLibrary);
     hidePopup();
+    clearForm();
 }
 
 const parent = document.getElementById('book_list')
@@ -70,7 +71,7 @@ function createDiv(library) {
     
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('deleteButton');
-        deleteButton.textContent = "Delete";
+        deleteButton.textContent = "Remove";
         deleteButton.className = "delete";
         deleteButton.id=i
         bookDiv.appendChild(deleteButton);
@@ -96,7 +97,7 @@ function clearCards(parent) {
     }
 }
 
-
+document.querySelector('.close-popup').addEventListener('click', hidePopup)
 
 document.getElementById('new').addEventListener('click', showPopup)
 
@@ -106,5 +107,16 @@ function showPopup() {
 
 function hidePopup() {
     document.querySelector('.inputs').style.display = "none"
+}
+
+function clearForm() {
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+    const pages = document.getElementById('pages');
+    const read = document.getElementById('read');
+    title.value="";
+    author.value = "";
+    pages.value = "";
+    read.checked= false
 }
 
