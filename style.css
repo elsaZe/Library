@@ -113,20 +113,20 @@ h3{
 
 #book_list{
     display: grid;
-    grid-template-columns: repeat(auto-fit minmax(200px 1fr));
+    grid-template-columns: repeat(auto-fit, 250px);
     gap: 50px;
     margin: 20px;
 }
 
 .book_box {
     border: 2px solid var(--font-color);
-    width: 250px;
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr 1fr auto;
+    grid-template-rows: 1fr auto auto auto auto;
     background-color: white;
     box-shadow: 2px 2px 1px gray;
     border-radius: 5px;
     justify-content: center;
+    gap: 0px;
 }
 
 .read_checkbox{
@@ -136,9 +136,10 @@ h3{
 }
 
 .book_title {
+    display: block;
     background-color: var(--background-color);
     font-size: x-large;
-    width: 250px;
+    width: auto;
 }
 
 
